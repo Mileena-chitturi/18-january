@@ -1,0 +1,25 @@
+NEXT PERMUTATION
+
+class Solution:
+    def nextPermutation(self,perm,N):
+        index=N-2
+        while(index>=0 and perm[index]>=perm[index+1]):
+            index-=1
+        if(index<0):
+            i=0
+            j=N-1
+            while(i<j):
+                perm[i],perm[j]=perm[j],perm[i]
+                i=i+1
+                j=j-1
+            return
+        t=N-1
+        while(perm[t]<=perm[index]):
+            t-=1
+        perm[index],perm[t]=perm[t],perm[index]
+        index+=1
+        k=N-1
+        while(index<k):
+            perm[index],perm[k]=perm[k],perm[index]
+            index=index+1
+            k=k-1
